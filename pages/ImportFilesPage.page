@@ -1,0 +1,116 @@
+<apex:page showHeader="true" sidebar="false" controller="ImportFilesController" docType="html-5.0">
+    <apex:form >
+        <apex:pageBlock title="Import a file for CAT">
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton action="{!upload}" value="Import"/>
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockSection columns="1" id="String" showHeader="Boolean">
+            <apex:pageBlockSectionItem >
+            <apex:outputText style="color:red; font-style: italic;" value="Sequence to import files for Contact and Affectations:"/>
+            </apex:pageBlockSectionItem>
+
+             <apex:pageBlockSectionItem >
+
+             <apex:outputText value=" "/>
+             <apex:outputText value="1. Contacts"/>
+
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                    <apex:outputText value=""/>
+                    <apex:outputText value="2. Affectation (Il est impératif d\'importer les fichiers suivants systématiquement après Affectation"/>
+            </apex:pageBlockSectionItem>
+
+              <apex:pageBlockSectionItem >
+                    <apex:outputText value=""/>
+                    <apex:outputText value="3. Organisation"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                    <apex:outputText value=""/>
+                    <apex:outputText value="4. Classification"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                    <apex:outputText value=""/>
+                    <apex:outputText value="5. Temps de travail"/>
+            </apex:pageBlockSectionItem>
+            
+            <apex:pageBlockSectionItem >
+                    <apex:outputText value=""/>
+                    <apex:outputText value="6. Etablissement"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                    <apex:outputText value=""/>
+                    <apex:outputText value=""/>
+            </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+
+                <apex:pageBlockSection showHeader="Boolean">
+                   <apex:pageBlockSectionItem >
+
+                    <apex:outputLabel value="File Type" for="object"/>
+                    <apex:selectList size="1" value="{!selectedFile}">
+                        <apex:selectOption itemValue="Contacts" itemLabel="Contacts"/>
+                        <apex:selectOption itemValue="Organisation" itemLabel="Organisation"/>
+                        <apex:selectOption itemValue="Affectation" itemLabel="Affectation"/>
+                        <apex:selectOption itemValue="Classification" itemLabel="Classification"/>
+                        <apex:selectOption itemValue="Pce" itemLabel="Pce"/>
+                        <apex:selectOption itemValue="Temps de travail" itemLabel="Temps de travail"/>
+                        <apex:selectOption itemValue="Etablissement" itemLabel="Etablissement"/>
+                        <apex:selectOption itemValue="Diplome" itemLabel="Diplome"/>
+                        <apex:selectOption itemValue="Salaires" itemLabel="Salaires"/>
+                        <apex:selectOption itemValue="Absence" itemLabel="Absence"/>
+                        <apex:selectOption itemValue="Medecine Du Travail" itemLabel="Medecine Du Travail"/>
+                        <apex:selectOption itemValue="Salaires Annuels" itemLabel="Salaires Annuels"/>
+                        <apex:selectOption itemValue="Formation" itemLabel="Formation"/>
+                    </apex:selectList>
+                   </apex:pageBlockSectionItem>
+                   <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="" />
+                        <apex:outputLabel value="" />
+                   </apex:pageBlockSectionItem>
+                   
+            
+                   <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Date inférieure" />
+                        <apex:input type="auto"  value="{!dateImportInf}" />
+                   </apex:pageBlockSectionItem>
+                   <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="" />
+                   </apex:pageBlockSectionItem>
+
+                   <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Date supérieure"/>
+                        <apex:input type="auto"  value="{!dateImportSup}" />
+                   </apex:pageBlockSectionItem>
+
+                    
+                    
+                </apex:pageBlockSection>
+                <apex:pageBlockSection showHeader="Boolean" columns="3" id="String1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="File" for="file"/>
+                    <apex:inputFile value="{!csvFileBody}" id="file"/>
+                </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+
+        </apex:pageBlock>
+        
+                <apex:pageBlock title="Lancement du batch">
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton action="{!lancementDuBatch}" value="Lancer"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection showHeader="Boolean" columns="3" id="String2">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Date de Lancement" for="object"/>
+                    <apex:input type="auto"  value="{!dateDeLancement}" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        
+    </apex:form>
+</apex:page>
